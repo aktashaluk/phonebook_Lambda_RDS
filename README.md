@@ -47,6 +47,7 @@ This project implements a serverless phonebook application utilizing a 3-tier ar
 4. **RDS & Environment Integration:**
    - Configure the RDS Endpoint in the Lambda function's **Environment Variables** (`DB_HOST`...).
    - Ensure the Lambda function is attached to the correct VPC, subnets, and security group for seamless database connectivity.
+   - To enable only the Lambda function to interact with Database add the security group of Lambda as inbound rule of RDS Instance.
 
 
 # User > EC2 (Flask App) > HTTP Request (POST/GET) >  Lambda Function URL > Lambda (Python App) > RDS MySQL
