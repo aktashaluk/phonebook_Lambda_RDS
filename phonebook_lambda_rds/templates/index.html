@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Telefon Rehberi</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input, button { width: 100%; padding: 10px; margin: 8px 0; box-sizing: border-box; }
+        button { background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .search-box { background: #e9ecef; padding: 10px; border-radius: 4px; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>📞 Telefon Rehberi</h2>
+
+    <!-- Kayıt Ekleme Formu -->
+    <form action="/add" method="POST">
+        <h3>Yeni Kayıt Ekle</h3>
+        <input type="text" name="name" placeholder="İsim Soyisim" required>
+        <input type="text" name="phone_number" placeholder="Telefon Numarası" required>
+        <button type="submit">Kaydet</button>
+    </form>
+
+    <hr>
+
+    <!-- Sorgulama / Arama Formu -->
+    <div class="search-box">
+        <h3>Rehberde Ara</h3>
+        <form method="GET" action="/">
+            <input type="text" name="search" value="{{ search_query }}" placeholder="İsim veya numara ile ara...">
+            <button type="submit" style="background-color: #28a745;">Sorgula</button>
+        </form>
+    </div>
+
+    <!-- Sonuç Listesi -->
+    <h3>Kayıtlar</h3>
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>İsim</th>
+            <th>Telefon Numarası</th>
+        </tr>
+        {% for row in records %}
+        <tr>
+            <td>{{ row.id }}</td>
+            <td>{{ row.name }}</td>
+            <td>{{ row.phone_number }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="3" style="text-align: center;">Kayıt bulunamadı.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>
