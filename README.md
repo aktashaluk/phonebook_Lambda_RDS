@@ -45,7 +45,7 @@ This project implements a serverless phonebook application utilizing a 3-tier ar
    - Open `app.py` on your EC2 instance and paste the Lambda Function URL into the `LAMBDA_URL` variable.
 
 4. **RDS & Environment Integration:**
-   - Configure the RDS Endpoint in the Lambda function's **Environment Variables** (`DB_HOST`).
+   - Configure the RDS Endpoint in the Lambda function's **Environment Variables** (`DB_HOST`...).
    - Ensure the Lambda function is attached to the correct VPC, subnets, and security group for seamless database connectivity.
 
 
